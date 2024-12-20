@@ -1,14 +1,18 @@
-document.getElementById('toggleButton').addEventListener('click', function() {
-    const block = document.getElementById('myBlock');
-    if (block.style.display === 'none' || block.style.display === '') {
-        block.style.display = 'flex';
-        this.textContent = 'Скрыть блок';
-    } else {
-        block.style.display = 'none';
-        this.textContent = 'Показать блок';
-    }
+const showButton = document.querySelector('.toggle-button:not(.hidden)');
+const hideButton = document.querySelector('.toggle-button.hidden');
+const additionalItems = document.querySelector('.brands-items__inner.second-block');
+// Обработчик для кнопки "Показать все"
+showButton.addEventListener('click', function () {
+    additionalItems.style.display = 'flex';
+    showButton.style.display = 'none'; // Скрываем верхнюю кнопку
+    hideButton.style.display = 'flex'; // Показываем кнопку "Скрыть"
 });
-
+// Обработчик для кнопки "Скрыть"
+hideButton.addEventListener('click', function () {
+    additionalItems.style.display = 'none';
+    showButton.style.display = 'flex'; // Показываем верхнюю кнопку
+    hideButton.style.display = 'none'; // Скрываем кнопку "Скрыть"
+});
 
 
 
@@ -16,7 +20,7 @@ function initSwiper() {
     if (window.innerWidth < 768) {
         swiper = new Swiper('.swiper', {
             direction: 'horizontal',
-            slidesPerView: 1.5,
+            slidesPerView: 1.4,
             spaceBetween: 10,
             loop: true,
             pagination: {
@@ -32,3 +36,4 @@ function initSwiper() {
 
 window.addEventListener('resize', initSwiper);
 window.addEventListener('load', initSwiper);
+
