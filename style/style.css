@@ -217,12 +217,23 @@ a:hover{
 }
 
 
-@media only screen and (max-width: 768px){
+
+@media only screen and (max-width: 1024px){
+    .brands-item{
+        max-width: 192px;
+    }
+}
+
+@media only screen and (max-width: 767px){
     .toggle-button{
         display: none !important;
     }
 
     .brands-items__inner.second-block{
         display: none !important;
+    }
+
+    .brands-item{
+        max-width: 100%;
     }
 }
