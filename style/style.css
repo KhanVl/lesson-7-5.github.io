@@ -152,6 +152,7 @@ a:hover{
     display: none;
 }
 
+
 @media only screen and (min-width: 768px){
     
     
@@ -184,7 +185,7 @@ a:hover{
         max-width: 240px;
         width: 100%;
         margin-bottom: 20px;
-        margin-right: 50px;
+        margin-right: 10px;
     }
     
     .brands-item:last-child{
@@ -208,6 +209,20 @@ a:hover{
     .icon.rotate{
         transform: rotate(180deg);
     }
+
+    .brands-items__inner.second-block{
+        display: none;
+    }
+    
 }
 
-    
+
+@media only screen and (max-width: 768px){
+    .toggle-button{
+        display: none !important;
+    }
+
+    .brands-items__inner.second-block{
+        display: none !important;
+    }
+}
