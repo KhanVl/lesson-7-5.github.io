@@ -1,20 +1,3 @@
-const showButton = document.querySelector('.toggle-button:not(.hidden)');
-const hideButton = document.querySelector('.toggle-button.hidden');
-const additionalItems = document.querySelector('.brands-items__inner.second-block');
-// Обработчик для кнопки "Показать все"
-showButton.addEventListener('click', function () {
-    additionalItems.style.display = 'inline-flex';
-    showButton.style.display = 'none'; // Скрываем верхнюю кнопку
-    hideButton.style.display = 'inline-flex'; // Показываем кнопку "Скрыть"
-});
-// Обработчик для кнопки "Скрыть"
-hideButton.addEventListener('click', function () {
-    additionalItems.style.display = 'none';
-    showButton.style.display = 'inline-flex'; // Показываем верхнюю кнопку
-    hideButton.style.display = 'none'; // Скрываем кнопку "Скрыть"
-});
-
-
 
 function initSwiper() {
     if (window.innerWidth < 768) {
@@ -37,3 +20,31 @@ function initSwiper() {
 window.addEventListener('resize', initSwiper);
 window.addEventListener('load', initSwiper);
 
+
+document.addEventListener('DOMContentLoaded', function() {
+    const items = document.querySelectorAll('.brands-item');
+    const toggleButton = document.querySelector('.toggle-button');
+    if (!toggleButton) {
+        console.warn('Элемент .toggle-button не найден.');
+        return;
+    }
+    const buttonText = toggleButton.querySelector('.brands-button__more');
+    const buttonIcon = toggleButton.querySelector('.icon');
+    const visibleCount = 8;
+    let expanded = false;
+
+    items.forEach((item, index) => {
+        if (index < visibleCount) item.classList.add('visible');
+    });
+
+    if (items.length > visibleCount) toggleButton.style.display = 'flex';
+
+    toggleButton.addEventListener('click', function() {
+        expanded = !expanded;
+        items.forEach((item, index) => {
+            if (index >= visibleCount) item.classList.toggle('visible', expanded);
+        });
+        buttonText.textContent = expanded ? 'Скрыть' : 'Показать все';
+        buttonIcon.classList.toggle('rotated', expanded);
+    });
+});

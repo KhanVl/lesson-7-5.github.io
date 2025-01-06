@@ -131,7 +131,7 @@ a:hover{
 
 
 .brands-item{
-    display: flex !important;
+    display: none;
     align-items: center;
     justify-content: space-between;
     background: #fff;
@@ -144,6 +144,15 @@ a:hover{
     margin-bottom: 45px;
 }
 
+.brands-item.visible{
+    display: flex;
+}
+
+.brands-item:hover .brands-button{
+    background: #ffe0e9;
+    border: 2px solid #ffe0e9;
+}
+
 .second-block{
     display: none;
 }
@@ -153,7 +162,7 @@ a:hover{
 }
 
 
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 760px){
     
     
     .brands-item{
@@ -206,7 +215,7 @@ a:hover{
         display: none;
     }
 
-    .icon.rotate{
+    .icon.rotated{
         transform: rotate(180deg);
     }
 
